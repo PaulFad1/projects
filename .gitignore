@@ -37,3 +37,4 @@ SDMK_Server/bin/Debug/net6.0/SDMK_Server.exe
 SDMK_Server/bin/Debug/net6.0/SDMK_Server.pdb
 SDMK_Server/bin/Debug/net6.0/SDMK_Server.runtimeconfig.json
 SDMK_Server/bin/Debug/net6.0/SDMK_Server.staticwebassets.runtime.json
+SDMK_Server/obj/Debug/net6.0/scopedcss/Pages/Connections_to_kzik.razor.rz.scp.css
