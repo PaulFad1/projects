@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using BlazorServer.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
-
+ServiceCollection services = new ServiceCollection();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<ConnectionService>().AddHostedService<ConnectionService>(services => services.GetRequiredService<ConnectionService>());
 
 var app = builder.Build();
 
@@ -24,6 +27,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.MapBlazorHub();
+app.MapHub<ConnectHub>("/connect");
 app.MapFallbackToPage("/_Host");
 
 app.Run();

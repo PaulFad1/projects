@@ -1,25 +1,36 @@
 @page "/connection_to_kzik"
-
+@using Microsoft.AspNetCore.SignalR.Client;
+@using BlazorServer.Data;
+@inject NavigationManager NavigationManager;
 <h1>Connections</h1>
-
 <table class="connections">
-    <tr>
-        <td>Kzik 1</td>
-        <td>192.168.1.1</td>
-        <td><input type="checkbox"/></td>
-        <td>Disconnecting</td>
-    </tr>
-    <tr>
-        <td>Kzik 2</td>
-        <td>192.168.1.2</td>
-        <td><input type="checkbox"/></td>
-        <td>Disconnecting</td>
-    </tr>
-    <tr>
-        <td>Kzik 3</td>
-        <td>192.168.1.3</td>
-        <td><input type="checkbox"/></td>
-        <td>Disconnecting</td>
-    </tr>
+    @foreach (var kz in kziks)
+    {
+        <tr>
+            <td>@kz.Name</td>
+            <td>@kz.IP</td>
+            <td><input type="checkbox"/></td>
+            <td>Disconnecting</td>
+        </tr>
+    }
 </table>
 
+@code {
+    private HubConnection _hubConnection;
+    private List<Kzik_Info> kziks = new List<Kzik_Info>();
+    protected override async Task OnInitializedAsync()
+    { 
+        _hubConnection = new HubConnectionBuilder()
+        .WithUrl(NavigationManager.ToAbsoluteUri("/connect"))
+        .WithAutomaticReconnect()
+        .Build();
+
+        _hubConnection.On<string,string,bool>("Get",(name, ip, isRunning) =>
+            {
+                kziks.Add(new Kzik_Info(name,ip,isRunning));
+                StateHasChanged();
+            });
+        await _hubConnection.StartAsync();
+    }
+
+}

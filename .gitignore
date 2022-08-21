@@ -38,3 +38,15 @@ SDMK_Server/bin/Debug/net6.0/SDMK_Server.pdb
 SDMK_Server/bin/Debug/net6.0/SDMK_Server.runtimeconfig.json
 SDMK_Server/bin/Debug/net6.0/SDMK_Server.staticwebassets.runtime.json
 SDMK_Server/obj/Debug/net6.0/scopedcss/Pages/Connections_to_kzik.razor.rz.scp.css
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.Connections.Abstractions.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.Http.Connections.Client.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.Http.Connections.Common.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.SignalR.Client.Core.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.SignalR.Client.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.SignalR.Common.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.AspNetCore.SignalR.Protocols.Json.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.Extensions.Features.dll
+SDMK_Server/bin/Debug/net6.0/Microsoft.Extensions.Logging.Abstractions.dll
+SDMK_Server/bin/Debug/net6.0/System.IO.Pipelines.dll
+.vscode/launch.json
+.vscode/tasks.json
