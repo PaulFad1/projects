@@ -2,6 +2,7 @@
 @using Microsoft.AspNetCore.SignalR.Client;
 @using BlazorServer.Data;
 @inject NavigationManager NavigationManager;
+@inject ConnectionService ConServ;
 <h1>Connections</h1>
 <table class="connections">
     @foreach (var kz in kziks)
@@ -22,7 +23,6 @@
     { 
         _hubConnection = new HubConnectionBuilder()
         .WithUrl(NavigationManager.ToAbsoluteUri("/connect"))
-        .WithAutomaticReconnect()
         .Build();
 
         _hubConnection.On<string,string,bool>("Get",(name, ip, isRunning) =>
@@ -31,6 +31,7 @@
                 StateHasChanged();
             });
         await _hubConnection.StartAsync();
+        await ConServ.getMessage();
     }
 
 }
